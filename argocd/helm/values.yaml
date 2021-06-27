@@ -1,6 +1,8 @@
 namespace:
   name: test
- 
+
+hostname: python-helloworld.k3s.ebe 
+
 image:
   repository: robinmglsk/python-helloworld 
   tag: latest

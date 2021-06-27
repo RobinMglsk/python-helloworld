@@ -3,7 +3,7 @@ name: Create Image
 on:
  push:
    branches:
-   - master
+   - main
 
 jobs:
   docker:
@@ -27,9 +27,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        platforms: 
-        - linux/amd64
-        - linux/arm64
-        tags: ${{ YOUR_DOCKERHUB_REPOSITORY }}:latest
+        platforms: linux/amd64,linux/arm64
+        tags: ${{ secrets.YOUR_DOCKERHUB_REPOSITORY }}:latest
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}

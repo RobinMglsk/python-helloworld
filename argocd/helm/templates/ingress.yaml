@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+  name: python-helloworld-ingress
+  namespace: {{ .Values.namespace.name }}
+spec:
+  rules:
+  - host: {{ .Values.hostname }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: python-helloworld-service
+            port:
+              number: 5000
+        path: /
+        pathType: Prefix
